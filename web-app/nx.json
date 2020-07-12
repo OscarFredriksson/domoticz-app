@@ -1,0 +1,40 @@
+{
+  "npmScope": "app",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "domoticz-app": {
+      "tags": []
+    },
+    "domoticz-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["domoticz-app"]
+    },
+    "template-app": {
+      "tags": []
+    },
+    "template-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["template-app"]
+    }
+  }
+}

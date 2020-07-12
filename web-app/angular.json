@@ -1,0 +1,158 @@
+{
+  "version": 1,
+  "projects": {
+    "domoticz-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "spec": true
+        }
+      },
+      "root": "apps/domoticz-app",
+      "sourceRoot": "apps/domoticz-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/domoticz-app",
+            "index": "apps/domoticz-app/src/index.html",
+            "main": "apps/domoticz-app/src/main.ts",
+            "polyfills": "apps/domoticz-app/src/polyfills.ts",
+            "tsConfig": "apps/domoticz-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/domoticz-app/src/favicon.ico",
+              "apps/domoticz-app/src/assets"
+            ],
+            "styles": [
+              "apps/domoticz-app/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/domoticz-app/src/environments/environment.ts",
+                  "with": "apps/domoticz-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "domoticz-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "domoticz-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "domoticz-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/domoticz-app/tsconfig.app.json",
+              "apps/domoticz-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/domoticz-app/**/*"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/domoticz-app/jest.config.js",
+            "tsConfig": "apps/domoticz-app/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/domoticz-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "domoticz-app-e2e": {
+      "root": "apps/domoticz-app-e2e",
+      "sourceRoot": "apps/domoticz-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/domoticz-app-e2e/cypress.json",
+            "tsConfig": "apps/domoticz-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "domoticz-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "domoticz-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/domoticz-app-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/domoticz-app-e2e/**/*"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/schematics:component": {
+      "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "domoticz-app"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "domoticz-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd web-app/ && ng build --prod --base-href . --output-path ../native/www/ && cd ../native && cordova run android"
+  },
+  "author": "",
+  "license": "ISC"
+}

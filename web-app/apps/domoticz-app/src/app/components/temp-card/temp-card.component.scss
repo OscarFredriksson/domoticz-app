@@ -1,0 +1,41 @@
+.title-row
+{
+    display: flex;
+    align-items: center;
+}
+
+
+.value-with-label-container
+{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.value-with-label-container .label
+{
+    font-size: 0.75em;
+}
+
+.icon-background
+{
+    //padding: 20px;
+    border-radius: 50%;
+    //border: 1px;
+    vertical-align: middle;
+}
+
+.max
+{
+    background-color: red;
+}
+
+.min
+{
+    background-color: blue;
+}
+
+mat-grid-tile
+{
+    //background-color: yellow;
+}
